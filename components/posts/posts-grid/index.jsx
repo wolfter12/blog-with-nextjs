@@ -1,4 +1,4 @@
-import PostItem from "../PostItem";
+import PostItem from "../post-item";
 import classes from "./posts-grid.module.css";
 
 function PostsGrid(props) {

@@ -1,4 +1,4 @@
-import PostsGrid from "../../posts/PostsGrid";
+import PostsGrid from "../../posts/posts-grid";
 
 import classes from "./featured-posts.module.css";
 

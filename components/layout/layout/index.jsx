@@ -1,4 +1,4 @@
-import MainNavigation from "../MainNavigation";
+import MainNavigation from "../main-navigation";
 
 function Layout(props) {
   const { children } = props;

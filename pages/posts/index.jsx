@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import AllPosts from "../../components/posts/AllPosts";
+import AllPosts from "../../components/posts/all-posts";
 import { getAllPosts } from "../../lib/posts-util";
 
 function AllPostsPage(props) {

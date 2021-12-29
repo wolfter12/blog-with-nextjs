@@ -1,4 +1,4 @@
-import PostsGrid from "../PostsGrid";
+import PostsGrid from "../posts-grid";
 import classes from "./all-posts.module.css";
 
 function AllPosts(props) {
