@@ -1,5 +1,7 @@
 import { MongoClient } from "mongodb";
 
+const connectionString = `${process.env.MONGODB_CONNECTION_SCHEMA}://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTERNAME}.ubt42.mongodb.net`;
+
 export const getAllDocuments = async (
   client,
   dbName,
@@ -24,13 +26,22 @@ export const getAllDocuments = async (
 };
 
 export const connectDatabase = async () => {
-  const client = await MongoClient.connect(process.env.MONGODB_CONNECTION_URL);
+  const client = await MongoClient.connect(connectionString);
 
   return client;
 };
 
+export const getDbConnection = async (client) => {
+  const db = client.db(process.env.MONGODB_DATABASE, {
+    retryWrites: true,
+    w: "majority",
+  });
+
+  return db;
+};
+
 export const insertDocument = async (client, collection, document) => {
-  const db = client.db("events", {
+  const db = client.db(process.env.MONGODB_DATABASE, {
     retryWrites: true,
     w: "majority",
   });

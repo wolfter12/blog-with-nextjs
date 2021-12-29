@@ -1,5 +1,7 @@
-import { MongoClient } from "mongodb";
-import { connectDatabase } from "../../../helpers/db-util";
+import {
+  connectDatabase,
+  insertDocument,
+} from "../../../helpers/db-util";
 
 function validateEmail(email) {
   return email.match(
@@ -40,12 +42,11 @@ async function handler(req, res) {
         return;
       }
 
-      const db = client.db();
-
       try {
-        const result = await db.collection("messages").insertOne(newMessage);
+        const result = await insertDocument(client, "messages", newMessage);
         newMessage.id = result.insertedId;
       } catch (error) {
+        console.log(error);
         res.status(500).json({ message: "Storing message in db failed!" });
         return;
       }
